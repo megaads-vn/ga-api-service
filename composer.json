@@ -1,6 +1,6 @@
 {
   "name": "megaads/ga-service",
-  "description": "Service get report from google analytic",
+  "description": "Service get report from google analytic, google ads",
   "keywords": [
     "ga",
     "analytic",
