@@ -13,7 +13,10 @@ class AdsCostAccount extends GoogleAds
     public function __construct(){
     }
 
-    public function report($key, $configPath, $filter = []) {
+    public function report($key = null, $configPath = null, $filter = []) {
+        if ($key == null || $configPath == null || count($filter) == 0) {
+            throw new \InvalidArgumentException('Missing argument');
+        }
         $from = $this->convertToReportDate($filter['from']);
         $to = $this->convertToReportDate($filter['to']);
         $adsApi = $this->getAdsApiService();

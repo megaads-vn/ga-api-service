@@ -14,10 +14,13 @@ class GoogleAnalytic
     public function __construct() {
     }
 
-    public function report($name, $keyFileLocation, $filter) {
+    public function report($name = null, $keyFileLocation = null, $filter = []) {
+        if ($name == null || $keyFileLocation == null || count($filter) == 0) {
+            throw new \InvalidArgumentException('Missing argument');
+        }
         $client = $this->gaAuthorzation($name, $keyFileLocation);
         $reports = $this->getReport($client, $filter);
-        $items = $this->readReport($reports);
+        $items = $this->buildItems($reports);
         $retVal = [];
         if (count($items) > 0) {
             foreach ($filter['metrics'] as $key => $val) {
@@ -30,7 +33,7 @@ class GoogleAnalytic
         return $retVal;
     }
 
-    private function readReport($reports) {
+    private function buildItems($reports) {
         $retVal = [];
         for ( $reportIndex = 0; $reportIndex < count( $reports ); $reportIndex++ ) {
             $report = $reports[ $reportIndex ];
