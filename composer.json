@@ -1,5 +1,5 @@
 {
-  "name": "megaads/ga-transfer",
+  "name": "megaads/ga-service",
   "description": "Service get report from google analytic",
   "keywords": [
     "ga",
@@ -24,7 +24,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Gatransfers\\": "src/Gatransfers"
+      "GaServices\\": "src/GaServices"
     }
   }
 }
