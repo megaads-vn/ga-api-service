@@ -1,7 +1,11 @@
 
-
-#Google Analytic
-```$xslt
+#Installation
+```
+composer require megaads/ga-service
+```
+#
+#Get Report From Google Analytic
+```
 $KEY_FILE_LOCATION =  '../config/client-secrets.json';
 $name = 'Chiaki';
 $filter = [
@@ -17,7 +21,7 @@ $items = $gaTransfer->report($name, $KEY_FILE_LOCATION, $filter);
 ```
 
 #Google Ads
-```$xslt
+```
 \\ Get cost ads of account
 $adsCostAccount = new \GaServices\AdsCostAccount();
 $fileConfig = '../config/adsapi_php.ini';
