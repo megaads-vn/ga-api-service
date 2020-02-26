@@ -5,7 +5,7 @@
 $KEY_FILE_LOCATION =  '../config/client-secrets.json';
 $name = 'Chiaki';
 $filter = [
-    'viewId' => '93825416',
+    'viewId' => 'xxxxxxxx',
     'from' => '2020-02-01',
     'to' => '2020-02-25',
     'metrics' => [
