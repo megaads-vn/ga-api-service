@@ -30,6 +30,6 @@ $adsCostAccount = new \GaServices\AdsCostAccount();
 $fileConfig = '../config/adsapi_php.ini';
 $customerId = 'xxx-xxx-xxxx';
 $filter = ['from' => '2020-01-01', 'to' => '2020-01-29']
-$cost = $adsAccount->report($customerId, $fileConfig, $filter);
+$cost = $adsCostAccount->report($customerId, $fileConfig, $filter);
 ```
 
