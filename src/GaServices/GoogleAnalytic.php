@@ -18,10 +18,20 @@ class GoogleAnalytic
         $client = $this->gaAuthorzation($name, $keyFileLocation);
         $reports = $this->getReport($client, $filter);
         $items = $this->readReport($reports);
-
+        $retVal = [];
+        if (count($items) > 0) {
+            foreach ($filter['metrics'] as $key => $val) {
+                $retVal[$val] = null;
+                if (isset($items[$key])) {
+                    $retVal[$val] = $items[$key];
+                }
+            }
+        }
+        return $retVal;
     }
 
     private function readReport($reports) {
+        $retVal = [];
         for ( $reportIndex = 0; $reportIndex < count( $reports ); $reportIndex++ ) {
             $report = $reports[ $reportIndex ];
             $rows = $report->getData()->getRows();
@@ -29,10 +39,11 @@ class GoogleAnalytic
                 $row = $rows[ $rowIndex ];
                 $metrics = $row->getMetrics();
                 for ($j = 0; $j < count($metrics); $j++) {
-                    $values = $metrics[$j]->getValues();
+                    $retVal = $metrics[$j]->getValues();
                 }
             }
         }
+        return $retVal;
     }
 
     private function getReport($client, $filter) {
@@ -43,14 +54,17 @@ class GoogleAnalytic
         $dateRange->setEndDate($filter['to']);
 
         // Create the Metrics object.
-        $sessions = new \Google_Service_AnalyticsReporting_Metric();
-        $sessions->setMetrics($filter['metrics']);
-
+        $metrics = [];
+        foreach ($filter['metrics'] as $metric) {
+            $metricObj = new \Google_Service_AnalyticsReporting_Metric();
+            $metricObj->setExpression($metric);
+            $metrics[] = $metricObj;
+        }
         // Create the ReportRequest object.
         $request = new \Google_Service_AnalyticsReporting_ReportRequest();
         $request->setViewId($filter['viewId']);
         $request->setDateRanges($dateRange);
-        $request->setMetrics(array($sessions));
+        $request->setMetrics($metrics);
 
         $body = new \Google_Service_AnalyticsReporting_GetReportsRequest();
         $body->setReportRequests( array( $request) );
