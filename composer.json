@@ -3,7 +3,9 @@
   "description": "Service get report from google analytic",
   "keywords": [
     "ga",
-    "analytic"
+    "analytic",
+    "google ads",
+    "ads report"
   ],
   "homepage": "https://www.megaads.vn",
   "license": "MIT",
