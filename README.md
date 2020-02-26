@@ -1,7 +1,10 @@
 
 #Installation
+add in file composer.json
 ```
-composer require megaads/ga-service
+"require": {
+	"megaads/ga-service": "^1.0"
+}
 ```
 #
 #Get Report From Google Analytic
