@@ -1,0 +1,30 @@
+{
+  "name": "megaads/ga-transfer",
+  "description": "Service get report from google analytic",
+  "keywords": [
+    "ga",
+    "analytic"
+  ],
+  "homepage": "https://www.megaads.vn",
+  "license": "MIT",
+  "type": "library",
+  "authors": [
+    {
+      "name": "megaads-vn",
+      "email": "info@megaads.vn"
+    },
+    {
+      "name": "kimtung",
+      "email": "nguyenkim08@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.6.4",
+    "google/apiclient": "^2.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Megaads\\Gatransfer\\": "src/"
+    }
+  }
+}
