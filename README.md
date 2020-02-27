@@ -3,7 +3,7 @@
 add in file composer.json
 ```
 "require": {
-	"megaads/ga-service": "^1.0"
+	"megaads/ga-service": "^1.1"
 }
 ```
 #
