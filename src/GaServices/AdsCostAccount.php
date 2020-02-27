@@ -41,7 +41,7 @@ class AdsCostAccount extends GoogleAds
     protected function readFileReport($filter = [])
     {
         $filePath = $filter['path'] . '/'. $filter['fileName'] . '.csv';
-        $data = \ExcelUtils::readFile($filePath);
+        $data = $this->readFile($filePath);
         return $data;
     }
 
